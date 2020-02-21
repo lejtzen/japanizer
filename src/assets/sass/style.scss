@@ -1,0 +1,318 @@
+html,
+body{
+    padding: 0;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.2em;
+    background: #fff;
+    color: rgba(0, 0, 0, .87);
+}
+
+html,
+body {
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+*{
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul,
+ol{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+button:disabled{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: .12;
+    cursor: default;
+}
+
+
+/*
+App
+*/
+
+#app{
+}
+
+
+/*
+Wallpaper
+*/
+
+#wallpaper{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/*
+View
+*/
+
+#view{
+    z-index: 2;
+    position: relative;
+    padding-top: 74px;
+    padding-bottom: 103px;
+}
+
+
+/*
+Top
+*/
+
+#top{
+    z-index: 3;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .06);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+
+/*
+Bottom
+*/
+
+#bottom{
+    z-index: 4;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    user-select: none;
+}
+
+.form{
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 0 -4px 0;
+}
+
+.form .textarea{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    resize: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 8px 40px 8px 12px;
+    border: 1px solid rgba(0, 0, 0, .06);
+    background: white;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    margin: 0;
+}
+
+.form .button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-radius: 100px;
+    padding: 0;
+    background-color: rgb(0, 122, 255);
+    cursor: pointer;
+}
+
+.form .button:disabled{
+    background-color: rgb(0, 0, 0);
+}
+
+
+/*
+Messages
+*/
+
+.messages li{
+    display: block;
+    overflow: auto;
+}
+
+.date{
+
+}
+
+.message{
+    max-width: calc(100% - 80px);
+    padding: 8px 12px;
+}
+
+.attachment{
+    max-width: calc(100% - 80px);
+    position: relative;
+}
+
+.attachment img,
+.attachment canvas{
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.replay{
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.replay button{
+    display: block;
+}
+
+.replay img{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px
+}
+
+.received{
+    float: left;
+}
+
+.sent{
+    float: right;
+}
+
+.fullscreen .messages li > div{
+    transition: all 1s;
+    opacity: 0;
+}
+
+.fullscreen .messages li:last-child .received.message{
+    opacity: 1 !important;
+}
+
+
+/*
+iPhone X
+*/
+
+.x-top,
+.x-right,
+.x-bottom,
+.x-left,
+.x-all{
+    width: 100%;
+}
+
+.x-top{
+    padding-top: 0;
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+}
+
+.x-right{
+    padding-right: 0;
+    padding-right: constant(safe-area-inset-right);
+    padding-right: env(safe-area-inset-right);
+}
+
+.x-bottom{
+    padding-bottom: 0;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.x-left{
+    padding-left: 0;
+    padding-left: constant(safe-area-inset-left);
+    padding-left: env(safe-area-inset-left);
+}
+
+.x-all{
+    padding-top: 0;
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+
+    padding-right: 0;
+    padding-right: constant(safe-area-inset-right);
+    padding-right: env(safe-area-inset-right);
+
+    padding-bottom: 0;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+
+    padding-left: 0;
+    padding-left: constant(safe-area-inset-left);
+    padding-left: env(safe-area-inset-left);
+}
+
+// Utilities
+@import 'util';
+
+// Animations
+@import 'animations';

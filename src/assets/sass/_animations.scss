@@ -1,0 +1,80 @@
+/*
+Fade animation
+*/
+
+.fade-enter-active, .fade-leave-active{
+    transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}
+
+
+/*
+Slide down animation
+*/
+
+.slide-down-enter-active, .slide-down-leave-active{
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slide-down-enter, .slide-down-leave-to{
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+
+/*
+Slide up animation
+*/
+
+.slide-up-enter-active, .slide-up-leave-active{
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slide-up-enter, .slide-up-leave-to{
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+
+/*
+List animation
+*/
+
+.list-enter-active, .list-leave-active{
+    transition: all .5s;
+}
+.list-enter, .list-leave-to{
+    opacity: 0;
+    transform: translateY(50%);
+}
+
+
+/*
+Writing
+*/
+
+@keyframes writing {
+    from {
+        transform: translateY(-75%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.writing{
+    display: inline-block;
+    height: 4px;
+    width: 4px;
+    background: rgba(0, 0, 0, .78);
+    border-radius: 100px;
+    animation-name: writing;
+    animation-timing-function: ease-in-out;
+    animation-duration: .75s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
