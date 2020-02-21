@@ -108,6 +108,8 @@
     }
 
     &--input{
+        background: white;
+
         .content{
             margin-left: auto;
         }
@@ -124,6 +126,7 @@
 }
 
 .character{
+    z-index: 1;
     position: fixed;
     top: 20%;
     left: 50%;

@@ -1,80 +1,61 @@
-/*
-Fade animation
-*/
+//
+// Welcome
+//
 
-.fade-enter-active, .fade-leave-active{
-    transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+.welcome-enter-active,
+.welcome-leave-active,
+.intro,
+.logo,
+.character,
+.panel--input,
+.panel--output{
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    transition-property: all;
 }
 
-.fade-enter, .fade-leave-to{
-    opacity: 0;
-}
-
-
-/*
-Slide down animation
-*/
-
-.slide-down-enter-active, .slide-down-leave-active{
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.slide-down-enter, .slide-down-leave-to{
-    opacity: 0;
-    transform: translateY(-100%);
-}
-
-
-/*
-Slide up animation
-*/
-
-.slide-up-enter-active, .slide-up-leave-active{
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.slide-up-enter, .slide-up-leave-to{
-    opacity: 0;
-    transform: translateY(100%);
-}
-
-
-/*
-List animation
-*/
-
-.list-enter-active, .list-leave-active{
-    transition: all .5s;
-}
-.list-enter, .list-leave-to{
-    opacity: 0;
-    transform: translateY(50%);
-}
-
-
-/*
-Writing
-*/
-
-@keyframes writing {
-    from {
-        transform: translateY(-75%);
+.welcome-enter-active,
+.welcome-leave-active{
+    .intro{
+        transform: scale(1);
     }
 
-    to {
+    .logo{
         transform: translateY(0%);
     }
+
+    .character{
+        opacity: 1;
+    }
+
+    .panel--input{
+        transform: translateX(0%);
+    }
+
+    .panel--output{
+        transform: translateX(0%);
+    }
 }
 
-.writing{
-    display: inline-block;
-    height: 4px;
-    width: 4px;
-    background: rgba(0, 0, 0, .78);
-    border-radius: 100px;
-    animation-name: writing;
-    animation-timing-function: ease-in-out;
-    animation-duration: .75s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
+.welcome-enter,
+.welcome-leave-to{
+    .intro{
+        transform: scale(0.5);
+    }
+
+    .logo{
+        transform: translateY(-100%);
+    }
+
+    .character{
+        opacity: 0;
+    }
+
+    .panel--input{
+        transform: translateX(-100%);
+    }
+
+    .panel--output{
+        transform: translateX(100%);
+    }
 }

@@ -1,13 +1,20 @@
 <template>
     <Layout>
-        <transition>
-            <div class="intro" v-if="isLoading">
-                {{ symbol }}
+        <transition name="welcome">
+            <div key="intro" v-if="isLoading">
+                <div class="intro">
+                    <Intro @done="isLoading = false" />
+                </div>
             </div>
 
-            <div class="layout" v-else>
-
-
+            <div class="layout" key="layout" v-else>
+                <h1 class="logo">
+                    <g-link to="/" title="Japanizer">
+                        <span class="logo__symbol">翻</span>
+                        <span class="logo__wordmark">Japanizer</span>
+                    </g-link>
+                </h1>
+                
                 <button class="toggle-sidebar" :class="{ 'toggle-sidebar--active': showConsole }" @click="showConsole = !showConsole">
                     <IconSettings />
                 </button>
@@ -47,6 +54,7 @@
 <script>
 import rules from '../utils/rules'
 import Console from '../components/Console'
+import Intro from '../components/Intro'
 
 export default {
     metaInfo: {
@@ -60,13 +68,13 @@ export default {
 
     components: {
         'Console': Console,
+        'Intro': Intro,
     },
 
     data: function () {
         return {
             isLoading: true,
-            symbol: '翻',
-            showConsole: true,
+            showConsole: false,
             input: 'Jag heter Vincent',
             shareIsAvailable: false,
             synth: null,
@@ -126,8 +134,6 @@ export default {
 
     mounted: function () {
         this.shareIsAvailable = this.isShareApiAvailable()
-
-        this.isLoading = false
     },
 
     watch: {
