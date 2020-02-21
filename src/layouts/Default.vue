@@ -41,7 +41,19 @@
                 </div>
                 <div class="console" :class="{ 'console--active': showConsole }">
                     <div class="console__inner">
-                        Console
+                        <h2>Grammar console</h2>
+                        <ul>
+                            <li v-for="correction in corrections">
+                                <h3>{{ correction.word }}</h3>
+
+                                <ul>
+                                    <li v-for="corr in correction.corrections">
+                                        <p>{{ corr.description }}</p>
+                                        {{ corr.was }} => {{ corr.became }}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -57,21 +69,45 @@
             return {
                 isLoading: true,
                 symbol: '翻',
-                showConsole: false,
+                showConsole: true,
                 input: 'Jag heter Vincent',
                 shareIsAvailable: false,
                 synth: null,
+                corrections: {},
             }
         },
 
         computed: {
-            output: function () {
+            output () {
                 let separator = ' '
                 let words = this.input.split(separator)
 
-                return words.map(function (word, index) {
-                    rules.forEach(function (rule) {
-                        word = word.replace(rule.find, rule.replace)
+                this.corrections = {}
+
+                return words.map((word, index) => {
+                    let original = word
+
+                    rules.forEach(rule => {
+                        word = word.replace(rule.find, match => {
+                            let corrections = this.corrections[index]
+
+                            if (!corrections) {
+                                corrections = {
+                                    word: original,
+                                    corrections: []
+                                }
+                            }
+
+                            corrections.corrections.push({
+                                was: match,
+                                became: rule.replace(match),
+                                description: rule.description
+                            })
+
+                            this.corrections[index] = corrections
+
+                            return rule.replace(match)
+                        })
                     })
 
                     return word

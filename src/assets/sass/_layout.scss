@@ -5,7 +5,7 @@
 .layout{
     z-index: 1;
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     align-items: stretch;
     flex-wrap: nowrap;
@@ -52,17 +52,22 @@
 }
 
 .console{
+    letter-spacing: normal;
     flex: 0 0 0%;
     max-width: 0%;
     background: black;
     overflow: hidden;
     transition: all ease-out 200ms;
     will-change: max-width, flex;
+    font-size: 16px;
 
     &__inner{
         min-height: 100%;
         width: 480px;
         background: white;
+        height: 100%;
+        overflow: auto;
+        padding: 1rem;
     }
 
     &--active{
