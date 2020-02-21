@@ -8,5 +8,33 @@ module.exports = {
     siteName: 'Japanizer by Lejtzén Design',
     siteUrl: 'https://lejtzen.github.io',
     pathPrefix: '/japanizer',
-    plugins: [],
+    plugins: [
+        {
+            use: 'gridsome-plugin-svg',
+            options: {
+                // default options below
+                goesBothWays: true,
+                svgo: [
+                    {
+                        removeTitle: false
+                    },
+                    {
+                        prefixIds: {
+                            prefix: (_, {path}) => basename(path, '.svg'),
+                            delim: '-',
+                        },
+                    },
+                    {
+                        removeDesc: false
+                    },
+                    {
+                        removeViewBox: false,
+                    },
+                    {
+                        sortAttrs: true,
+                    }
+                ],
+            }
+        }
+    ],
 }

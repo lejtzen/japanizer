@@ -14,12 +14,12 @@
                 </h1>
 
                 <button class="toggle-console" :class="{ 'toggle-console--active': showConsole }" type="button" name="openConsole" @click="showConsole = !showConsole">
-                    []
+                    <IconSettings />
                 </button>
 
                 <div class="panels">
                     <div class="character">
-                        CHAR :)
+                        <IconVolume />
                     </div>
                     <div class="panel panel--input">
                         <div class="content">
@@ -30,7 +30,10 @@
                         <div class="content">
                             <div v-html="$options.filters.withLineBreaks(output)"></div>
 
-                            <button v-if="shareIsAvailable" @click="share()" type="button" name="shareOutput">[] Share</button>
+                            <button v-if="shareIsAvailable" @click="share()" type="button" name="shareOutput">
+                                <IconShare />
+                                Share
+                            </button>
                         </div>
                     </div>
                 </div>

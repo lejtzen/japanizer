@@ -1,11 +1,22 @@
 // This is the main.js file. Import global CSS and scripts here.
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
+// Layouts
 import DefaultLayout from '~/layouts/Default.vue'
+
+// Icons
+import IconSettings from '@/assets/images/settings.svg?inline'
+import IconVolume from '@/assets/images/volume-2.svg?inline'
+import IconShare from '@/assets/images/share.svg?inline'
 
 export default function (Vue, { router, head, isClient }) {
     // Set default layout as a global component
     Vue.component('Layout', DefaultLayout)
+
+    // Icons
+    Vue.component('IconSettings', IconSettings)
+    Vue.component('IconVolume', IconVolume)
+    Vue.component('IconShare', IconShare)
 
     // Apply directive
     Vue.directive('resize', {
