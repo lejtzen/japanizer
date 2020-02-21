@@ -1,24 +1,22 @@
-html,
-body{
-    padding: 0;
-    margin: 0;
+html{
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    font-size: 36px;
+    background: #fff;
 }
 
 body{
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 36px;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: -0.05em;
     color: rgba(0, 0, 0, .87);
-    background: #fff;
 }
 
 html,
@@ -70,196 +68,6 @@ App
 */
 
 #app{
-}
-
-
-/*
-Wallpaper
-*/
-
-#wallpaper{
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-
-/*
-View
-*/
-
-#view{
-    z-index: 2;
-    position: relative;
-    padding-top: 74px;
-    padding-bottom: 103px;
-}
-
-
-/*
-Top
-*/
-
-#top{
-    z-index: 3;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, .06);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-
-
-/*
-Bottom
-*/
-
-#bottom{
-    z-index: 4;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    user-select: none;
-}
-
-.form{
-    position: relative;
-    display: block;
-    width: 100%;
-    margin: 0 0 -4px 0;
-}
-
-.form .textarea{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
-    resize: none;
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    padding: 8px 40px 8px 12px;
-    border: 1px solid rgba(0, 0, 0, .06);
-    background: white;
-    font-size: inherit;
-    font-family: inherit;
-    line-height: normal;
-    margin: 0;
-}
-
-.form .button{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    -webkit-appearance: none;
-    border: none;
-    outline: none;
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    border-radius: 100px;
-    padding: 0;
-    background-color: rgb(0, 122, 255);
-    cursor: pointer;
-}
-
-.form .button:disabled{
-    background-color: rgb(0, 0, 0);
-}
-
-
-/*
-Messages
-*/
-
-.messages li{
-    display: block;
-    overflow: auto;
-}
-
-.date{
-
-}
-
-.message{
-    max-width: calc(100% - 80px);
-    padding: 8px 12px;
-}
-
-.attachment{
-    max-width: calc(100% - 80px);
-    position: relative;
-}
-
-.attachment img,
-.attachment canvas{
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0;
-}
-
-.replay{
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translateX(100%);
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.replay button{
-    display: block;
-}
-
-.replay img{
-    width: 14px;
-    height: 14px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 2px
-}
-
-.received{
-    float: left;
-}
-
-.sent{
-    float: right;
-}
-
-.fullscreen .messages li > div{
-    transition: all 1s;
-    opacity: 0;
-}
-
-.fullscreen .messages li:last-child .received.message{
-    opacity: 1 !important;
 }
 
 
@@ -316,9 +124,6 @@ iPhone X
     padding-left: constant(safe-area-inset-left);
     padding-left: env(safe-area-inset-left);
 }
-
-// Utilities
-@import 'util';
 
 // Animations
 @import 'animations';
