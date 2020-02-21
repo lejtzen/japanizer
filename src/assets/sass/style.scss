@@ -54,6 +54,7 @@ button{
     background: transparent;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    color: inherit;
 }
 
 button:disabled{

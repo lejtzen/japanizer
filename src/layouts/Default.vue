@@ -30,7 +30,7 @@
                         <div class="content">
                             <div v-html="$options.filters.withLineBreaks(output)"></div>
 
-                            <button type="button" name="shareOutput">[] Share</button>
+                            <button v-if="shareIsAvailable" @click="share()" type="button" name="shareOutput">[] Share</button>
                         </div>
                     </div>
                 </div>
@@ -54,6 +54,7 @@
                 symbol: '翻',
                 showConsole: false,
                 input: 'Jag heter Vincent',
+                shareIsAvailable: false,
             }
         },
 
@@ -84,6 +85,8 @@
         },
 
         mounted: function () {
+            this.shareIsAvailable = this.isShareApiAvailable()
+
             this.isLoading = false
         },
 
@@ -91,6 +94,21 @@
         },
 
         methods: {
+            isShareApiAvailable: function () {
+                return !!(window.navigator && window.navigator.share)
+            },
+
+            share() {
+                let title = document.title
+                let url = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href
+
+                navigator.share({
+                    title: title,
+                    url: url,
+                }).then(() => {
+                    alert('Thanks for sharing')
+                })
+            },
         }
     }
 </script>
