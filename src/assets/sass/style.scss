@@ -5,8 +5,7 @@ html{
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    font-size: 36px;
-    background: #fff;
+    font-size: 18px;
 }
 
 body{
@@ -15,7 +14,6 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: -0.05em;
     color: rgba(0, 0, 0, .87);
 }
 
@@ -127,7 +125,9 @@ iPhone X
 
 // Animations
 @import 'animations';
+@import 'typography';
 
 // Parts
 @import 'intro';
 @import 'layout';
+@import 'console';

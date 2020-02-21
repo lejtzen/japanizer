@@ -14,11 +14,9 @@
 .logo{
     z-index: 2;
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 2rem;
+    left: 2rem;
     margin: 0;
-    font-weight: 900;
-    font-size: 1rem;
 
     a{
         color: rgba(0,0,0,.87);
@@ -39,19 +37,28 @@
     }
 }
 
-.toggle-console{
+.toggle-sidebar{
     color: white;
     z-index: 2;
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    top: 2rem;
+    right: 2rem;
+    transition: all ease-out 200ms;
+    transform: rotate(0deg);
+    margin: 0;
+    padding: 0;
 
     &--active{
+        transform: rotate(180deg);
         color: black;
+    }
+
+    svg{
+        display: block;
     }
 }
 
-.console{
+.sidebar{
     letter-spacing: normal;
     flex: 0 0 0%;
     max-width: 0%;
@@ -59,7 +66,11 @@
     overflow: hidden;
     transition: all ease-out 200ms;
     will-change: max-width, flex;
-    font-size: 16px;
+
+    &--active{
+        flex: 0 0 480px;
+        max-width: 480px;
+    }
 
     &__inner{
         min-height: 100%;
@@ -67,12 +78,7 @@
         background: white;
         height: 100%;
         overflow: auto;
-        padding: 1rem;
-    }
-
-    &--active{
-        flex: 0 0 480px;
-        max-width: 480px;
+        padding: 2rem;
     }
 }
 

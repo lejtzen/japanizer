@@ -1,5 +1,5 @@
 <template>
-    <div class="app">
+    <div>
         <transition>
             <div class="intro" v-if="isLoading">
                 {{ symbol }}
@@ -13,7 +13,7 @@
                     </g-link>
                 </h1>
 
-                <button class="toggle-console" :class="{ 'toggle-console--active': showConsole }" type="button" name="openConsole" @click="showConsole = !showConsole">
+                <button class="toggle-sidebar" :class="{ 'toggle-sidebar--active': showConsole }" @click="showConsole = !showConsole">
                     <IconSettings />
                 </button>
 
@@ -39,21 +39,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="console" :class="{ 'console--active': showConsole }">
-                    <div class="console__inner">
-                        <h2>Grammar console</h2>
-                        <ul>
-                            <li v-for="correction in corrections">
-                                <h3>{{ correction.word }}</h3>
-
-                                <ul>
-                                    <li v-for="corr in correction.corrections">
-                                        <p>{{ corr.description }}</p>
-                                        {{ corr.was }} => {{ corr.became }}
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                <div class="sidebar" :class="{ 'sidebar--active': showConsole }">
+                    <div class="sidebar__inner">
+                        <Console :corrections="corrections" />
                     </div>
                 </div>
             </div>
@@ -63,8 +51,13 @@
 
 <script>
     import rules from '../utils/rules'
+    import Console from '../components/Console'
 
     export default {
+        components: {
+            'Console': Console,
+        },
+
         data: function () {
             return {
                 isLoading: true,
