@@ -6,7 +6,7 @@
 <script>
     export default {
         metaInfo: {
-            title: 'Japanizer - A funny japanese translator made by Vincent Lejtzén',
+            title: 'Japanizer by Lejtzén Design',
             meta: [
                 {
                     name: 'description', content: 'This project of mine will translate everything to japanese.'
