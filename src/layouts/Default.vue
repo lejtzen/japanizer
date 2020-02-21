@@ -23,12 +23,12 @@
                     </div>
                     <div class="panel panel--input">
                         <div class="content">
-                            Input
+                            <textarea name="input" v-model="input" v-resize></textarea>
                         </div>
                     </div>
                     <div class="panel panel--output">
                         <div class="content">
-                            Output
+                            <div v-html="$options.filters.withLineBreaks(output)"></div>
 
                             <button type="button" name="shareOutput">[] Share</button>
                         </div>
@@ -45,16 +45,39 @@
 </template>
 
 <script>
+    import rules from '../utils/rules'
+
     export default {
         data: function () {
             return {
                 isLoading: true,
                 symbol: '翻',
                 showConsole: false,
+                input: 'Jag heter Vincent',
             }
         },
 
         computed: {
+            output: function () {
+                let separator = ''
+                let words = this.input.split(separator)
+
+                return words.map(function (word, index) {
+                    rules.forEach(function (rule) {
+                        word = word.replace(rule.find, rule.replace)
+                    })
+
+                    return word
+                }).join(separator)
+            },
+        },
+
+        filters: {
+            withLineBreaks: function (value) {
+                if (!value) return
+
+                return (value.toString()).replace(/\n/gi, '<br>')
+            },
         },
 
         beforeMount: function () {
