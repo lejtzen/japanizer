@@ -60,7 +60,7 @@
                 showConsole: false,
                 input: 'Jag heter Vincent',
                 shareIsAvailable: false,
-                voices: [],
+                synth: null,
             }
         },
 
@@ -88,6 +88,7 @@
         },
 
         beforeMount: function () {
+            this.synth = window.speechSynthesis
         },
 
         mounted: function () {
@@ -117,9 +118,8 @@
             },
 
             speak: function (text) {
-                let synth = window.speechSynthesis
                 let utterance = new SpeechSynthesisUtterance(text)
-                let voices = synth.getVoices()
+                let voices = this.synth.getVoices()
 
                 utterance.pitch = 1
                 utterance.rate = 1
@@ -132,7 +132,7 @@
                     utterance.voice = voices[58]
                 }
 
-                synth.speak(utterance)
+                this.synth.speak(utterance)
             },
         }
     }
