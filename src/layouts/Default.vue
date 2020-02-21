@@ -66,7 +66,7 @@
 
         computed: {
             output: function () {
-                let separator = ''
+                let separator = ' '
                 let words = this.input.split(separator)
 
                 return words.map(function (word, index) {
