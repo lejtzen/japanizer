@@ -92,6 +92,7 @@
     flex-grow: 1;
     transition: all ease-out 200ms;
     will-change: max-width, flex;
+    font-size: 2rem;
 }
 
 .panel{
@@ -116,7 +117,7 @@
     }
 
     &--output{
-        background: black;
+        background: #D41D1D;
         color: white;
 
         .content{
@@ -148,6 +149,7 @@ textarea{
     padding: 0;
     margin: 0;
     overflow: hidden;
+    background: transparent;
 
     &:focus{
         outline: none;
