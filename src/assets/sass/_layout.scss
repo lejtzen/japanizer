@@ -1,0 +1,119 @@
+//
+// Layout
+//
+
+.layout{
+    z-index: 1;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+
+.logo{
+    z-index: 2;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    margin: 0;
+    font-weight: 900;
+
+    a{
+        color: rgba(0,0,0,.87);
+    }
+
+    a:hover &__wordmark{
+        text-decoration: line-through;
+        text-decoration-style: wavy;
+        text-decoration-color: #D41D1D;
+    }
+
+    &__symbol{
+        color: #D41D1D;
+    }
+
+    &__wordmark{
+
+    }
+}
+
+.toggle-console{
+    color: white;
+    z-index: 2;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+
+    &--active{
+        color: black;
+    }
+}
+
+.console{
+    flex: 0 0 0%;
+    max-width: 0%;
+    background: black;
+    overflow: hidden;
+    transition: all ease-out 200ms;
+    will-change: max-width, flex;
+
+    &__inner{
+        min-height: 100%;
+        width: 480px;
+        background: white;
+    }
+
+    &--active{
+        flex: 0 0 480px;
+        max-width: 480px;
+    }
+}
+
+.panels{
+    min-height: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    flex-grow: 1;
+    transition: all ease-out 200ms;
+    will-change: max-width, flex;
+}
+
+.panel{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex: 0 0 50%;
+    max-width: 50%;
+
+    .content{
+        width: 100%;
+        max-width: 640px;
+        padding: 4rem;
+    }
+
+    &--input{
+        .content{
+            margin-left: auto;
+        }
+    }
+
+    &--output{
+        background: black;
+        color: white;
+
+        .content{
+            margin-right: auto;
+        }
+    }
+}
+
+.character{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
