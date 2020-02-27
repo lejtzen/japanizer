@@ -1,4 +1,4 @@
-# ask
+# Japanizer
 Funny japanese translator.
 
 ## Live demo
