@@ -9,12 +9,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.19"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
-    "gridsome-plugin-svg": "0.0.10",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0"
+    "gh-pages": "^3.1.0",
+    "gridsome-plugin-svg": "0.0.14",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.3"
   }
 }
