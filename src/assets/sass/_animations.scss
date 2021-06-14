@@ -8,54 +8,54 @@
 .logo,
 .character,
 .panel--input,
-.panel--output{
+.panel--output {
     transition-duration: 500ms;
     transition-timing-function: ease-out;
     transition-property: all;
 }
 
 .welcome-enter-active,
-.welcome-leave-active{
-    .intro{
+.welcome-leave-active {
+    .intro {
         transform: scale(1);
     }
 
-    .logo{
+    .logo {
         transform: translateY(0%);
     }
 
-    .character{
+    .character {
         opacity: 1;
     }
 
-    .panel--input{
+    .panel--input {
         transform: translateX(0%);
     }
 
-    .panel--output{
+    .panel--output {
         transform: translateX(0%);
     }
 }
 
 .welcome-enter,
-.welcome-leave-to{
-    .intro{
+.welcome-leave-to {
+    .intro {
         transform: scale(0.5);
     }
 
-    .logo{
+    .logo {
         transform: translateY(-100%);
     }
 
-    .character{
+    .character {
         opacity: 0;
     }
 
-    .panel--input{
+    .panel--input {
         transform: translateX(-100%);
     }
 
-    .panel--output{
+    .panel--output {
         transform: translateX(100%);
     }
 }

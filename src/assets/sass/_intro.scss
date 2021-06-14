@@ -2,7 +2,7 @@
 // Intro
 //
 
-.intro{
+.intro {
     z-index: 0;
     position: fixed;
     top: 0;
@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
 
-    &__symbol{
+    &__symbol {
         font-size: 16rem;
         transition: text-shadow ease-in-out 200ms;
     }

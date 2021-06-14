@@ -9,7 +9,7 @@ import IconSettings from '@/assets/images/settings.svg?inline'
 import IconVolume from '@/assets/images/volume-2.svg?inline'
 import IconShare from '@/assets/images/share.svg?inline'
 
-export default function (Vue, { router, head, isClient }) {
+export default function(Vue, { router, head, isClient }) {
     // Set default layout as a global component
     Vue.component('Layout', DefaultLayout)
 
@@ -20,15 +20,15 @@ export default function (Vue, { router, head, isClient }) {
 
     // Apply directive
     Vue.directive('resize', {
-        bind: function (element) {
+        bind: function(element) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
         },
-        inserted: function (element) {
+        inserted: function(element) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
         },
-        update: function (element) {
+        update: function(element) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
         },
@@ -37,27 +37,28 @@ export default function (Vue, { router, head, isClient }) {
     // Charset
     head.meta.push({
         name: 'charset',
-        content: 'UTF-8'
+        content: 'UTF-8',
     })
 
     // Viewport
     head.meta.push({
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+        content:
+            'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover',
     })
 
     // Web app
     head.meta.push({
         name: 'apple-mobile-web-app-capable',
-        content: 'yes'
+        content: 'yes',
     })
     head.meta.push({
         name: 'apple-mobile-web-app-title',
-        content: 'Japanizer'
+        content: 'Japanizer',
     })
     head.meta.push({
         name: 'apple-mobile-web-app-status-bar-style',
-        content: 'black-translucent'
+        content: 'black-translucent',
     })
 }
 

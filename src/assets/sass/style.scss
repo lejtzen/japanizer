@@ -1,4 +1,4 @@
-html{
+html {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -9,13 +9,15 @@ html{
     background: black;
 }
 
-body{
+body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol';
     font-size: 1rem;
     font-weight: 600;
-    color: rgba(0, 0, 0, .87);
+    color: rgba(0, 0, 0, 0.87);
 }
 
 html,
@@ -29,46 +31,44 @@ body::-webkit-scrollbar {
 
 *,
 *::before,
-*::after{
+*::after {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
 ul,
-ol{
+ol {
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-button{
+button {
     outline: none;
     border: none;
     background: transparent;
     cursor: pointer;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     color: inherit;
 }
 
-button:disabled{
+button:disabled {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
-    opacity: .12;
+    opacity: 0.12;
     cursor: default;
 }
-
 
 /*
 App
 */
 
-#app{
+#app {
 }
-
 
 /*
 iPhone X
@@ -78,35 +78,35 @@ iPhone X
 .x-right,
 .x-bottom,
 .x-left,
-.x-all{
+.x-all {
     width: 100%;
 }
 
-.x-top{
+.x-top {
     padding-top: 0;
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
 }
 
-.x-right{
+.x-right {
     padding-right: 0;
     padding-right: constant(safe-area-inset-right);
     padding-right: env(safe-area-inset-right);
 }
 
-.x-bottom{
+.x-bottom {
     padding-bottom: 0;
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
 }
 
-.x-left{
+.x-left {
     padding-left: 0;
     padding-left: constant(safe-area-inset-left);
     padding-left: env(safe-area-inset-left);
 }
 
-.x-all{
+.x-all {
     padding-top: 0;
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);

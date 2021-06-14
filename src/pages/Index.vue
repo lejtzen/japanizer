@@ -14,8 +14,12 @@
                         <span class="logo__wordmark">Japanizer</span>
                     </g-link>
                 </h1>
-                
-                <button class="toggle-sidebar" :class="{ 'toggle-sidebar--active': showConsole }" @click="showConsole = !showConsole">
+
+                <button
+                    class="toggle-sidebar"
+                    :class="{ 'toggle-sidebar--active': showConsole }"
+                    @click="showConsole = !showConsole"
+                >
                     <IconSettings />
                 </button>
 
@@ -27,21 +31,36 @@
                     </div>
                     <div class="panel panel--input">
                         <div class="content">
-                            <textarea name="input" v-model="input" v-resize rows="1"></textarea>
+                            <textarea
+                                name="input"
+                                v-model="input"
+                                v-resize
+                                rows="1"
+                            ></textarea>
                         </div>
                     </div>
                     <div class="panel panel--output">
                         <div class="content">
-                            <div v-html="$options.filters.withLineBreaks(output)"></div>
+                            <div
+                                v-html="$options.filters.withLineBreaks(output)"
+                            ></div>
 
-                            <button v-if="shareIsAvailable" @click="share()" type="button" name="shareOutput">
+                            <button
+                                v-if="shareIsAvailable"
+                                @click="share()"
+                                type="button"
+                                name="shareOutput"
+                            >
                                 <IconShare />
                                 Share
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="sidebar" :class="{ 'sidebar--active': showConsole }">
+                <div
+                    class="sidebar"
+                    :class="{ 'sidebar--active': showConsole }"
+                >
                     <div class="sidebar__inner">
                         <Console :corrections="corrections" />
                     </div>
@@ -61,17 +80,19 @@ export default {
         title: 'Japanizer by Lejtzén Design',
         meta: [
             {
-                name: 'description', content: 'This project of mine will translate everything to japanese.'
+                name: 'description',
+                content:
+                    'This project of mine will translate everything to japanese.',
             },
         ],
     },
 
     components: {
-        'Console': Console,
-        'Intro': Intro,
+        Console: Console,
+        Intro: Intro,
     },
 
-    data: function () {
+    data: function() {
         return {
             isLoading: true,
             showConsole: false,
@@ -83,80 +104,85 @@ export default {
     },
 
     computed: {
-        output () {
+        output() {
             let separator = ' '
             let words = this.input.split(separator)
 
             this.corrections = {}
 
-            return words.map((word, index) => {
-                let original = word
+            return words
+                .map((word, index) => {
+                    let original = word
 
-                rules.forEach(rule => {
-                    word = word.replace(rule.find, match => {
-                        let corrections = this.corrections[index]
+                    rules.forEach(rule => {
+                        word = word.replace(rule.find, match => {
+                            let corrections = this.corrections[index]
 
-                        if (!corrections) {
-                            corrections = {
-                                word: original,
-                                corrections: []
+                            if (!corrections) {
+                                corrections = {
+                                    word: original,
+                                    corrections: [],
+                                }
                             }
-                        }
 
-                        corrections.corrections.push({
-                            was: match,
-                            became: rule.replace(match),
-                            description: rule.description
+                            corrections.corrections.push({
+                                was: match,
+                                became: rule.replace(match),
+                                description: rule.description,
+                            })
+
+                            this.corrections[index] = corrections
+
+                            return rule.replace(match)
                         })
-
-                        this.corrections[index] = corrections
-
-                        return rule.replace(match)
                     })
-                })
 
-                return word
-            }).join(separator)
+                    return word
+                })
+                .join(separator)
         },
     },
 
     filters: {
-        withLineBreaks: function (value) {
+        withLineBreaks: function(value) {
             if (!value) return
 
-            return (value.toString()).replace(/\n/gi, '<br>')
+            return value.toString().replace(/\n/gi, '<br>')
         },
     },
 
-    beforeMount: function () {
+    beforeMount: function() {
         this.synth = window.speechSynthesis
     },
 
-    mounted: function () {
+    mounted: function() {
         this.shareIsAvailable = this.isShareApiAvailable()
     },
 
-    watch: {
-    },
+    watch: {},
 
     methods: {
-        isShareApiAvailable: function () {
+        isShareApiAvailable: function() {
             return !!(window.navigator && window.navigator.share)
         },
 
-        share: function () {
+        share: function() {
             let title = document.title
-            let url = document.querySelector('link[rel=canonical]') ? document.querySelector('link[rel=canonical]').href : document.location.href
+            let url = document.querySelector('link[rel=canonical]')
+                ? document.querySelector('link[rel=canonical]').href
+                : document.location.href
 
-            navigator.share({
-                title: title,
-                url: url,
-            }).then(() => {
-                // Ready for callback
-            })
+            navigator
+                .share({
+                    title: title,
+                    url: url,
+                })
+                .then(() => {
+                    // Ready for callback
+                })
         },
 
-        speak: function (text) {
+        speak: function(text) {
             let utterance = new SpeechSynthesisUtterance(text)
             let voices = this.synth.getVoices()
 
@@ -173,6 +199,6 @@ export default {
 
             this.synth.speak(utterance)
         },
-    }
+    },
 }
 </script>

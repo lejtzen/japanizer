@@ -2,7 +2,7 @@
 // Layout
 //
 
-.layout{
+.layout {
     z-index: 1;
     position: relative;
     height: 100vh;
@@ -11,33 +11,33 @@
     flex-wrap: nowrap;
 }
 
-.logo{
+.logo {
     z-index: 2;
     position: fixed;
     top: 2rem;
     left: 2rem;
     margin: 0;
 
-    a{
-        color: rgba(0,0,0,.87);
+    a {
+        color: rgba(0, 0, 0, 0.87);
     }
 
-    a:hover &__wordmark{
+    a:hover &__wordmark {
         text-decoration: line-through;
         text-decoration-style: wavy;
-        text-decoration-color: #D41D1D;
+        text-decoration-color: #d41d1d;
     }
 
-    &__symbol{
-        color: #D41D1D;
+    &__symbol {
+        color: #d41d1d;
     }
 
-    &__wordmark{
+    &__wordmark {
         margin-left: 0.25em;
     }
 }
 
-.toggle-sidebar{
+.toggle-sidebar {
     color: white;
     z-index: 2;
     position: fixed;
@@ -48,17 +48,17 @@
     margin: 0;
     padding: 0;
 
-    &--active{
+    &--active {
         transform: rotate(180deg);
         color: black;
     }
 
-    svg{
+    svg {
         display: block;
     }
 }
 
-.sidebar{
+.sidebar {
     letter-spacing: normal;
     flex: 0 0 0%;
     max-width: 0%;
@@ -67,12 +67,12 @@
     transition: all ease-out 200ms;
     will-change: max-width, flex;
 
-    &--active{
+    &--active {
         flex: 0 0 480px;
         max-width: 480px;
     }
 
-    &__inner{
+    &__inner {
         min-height: 100%;
         width: 480px;
         background: white;
@@ -82,7 +82,7 @@
     }
 }
 
-.panels{
+.panels {
     position: relative;
     min-height: 100%;
     max-width: 100%;
@@ -96,59 +96,59 @@
     font-size: 2rem;
 }
 
-.panel{
+.panel {
     display: flex;
     align-items: center;
     width: 100%;
     flex: 0 0 50%;
     max-width: 50%;
 
-    .content{
+    .content {
         width: 100%;
         max-width: 640px;
         padding: 4rem;
     }
 
-    &--input{
+    &--input {
         background: white;
 
-        .content{
+        .content {
             margin-left: auto;
         }
     }
 
-    &--output{
-        background: #D41D1D;
+    &--output {
+        background: #d41d1d;
         color: white;
 
-        .content{
+        .content {
             margin-right: auto;
         }
     }
 }
 
-.character{
+.character {
     z-index: 1;
     position: absolute;
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
 
-    button{
+    button {
         position: relative;
-        background: rgba(255,255,255,1);
+        background: rgba(255, 255, 255, 1);
         border-radius: 9999px;
-        box-shadow: 0 0.5rem 1rem rgba(0,0,0,.12);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
         display: block;
         height: 4rem;
         width: 4rem;
 
-        &:hover{
+        &:hover {
             transform: scale(1.1);
-            box-shadow: 0 0.75rem 1rem rgba(0,0,0,.06);
+            box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.06);
         }
 
-        svg{
+        svg {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -157,7 +157,7 @@
     }
 }
 
-textarea{
+textarea {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -174,7 +174,7 @@ textarea{
     overflow: hidden;
     background: transparent;
 
-    &:focus{
+    &:focus {
         outline: none;
     }
 }

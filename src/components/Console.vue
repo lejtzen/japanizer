@@ -2,11 +2,14 @@
     <div class="console">
         <h2>Grammar console</h2>
         <ul>
-            <li v-for="correction in corrections">
+            <li v-for="(correction, index) in corrections" :key="index">
                 <h3>{{ correction.word }}</h3>
 
                 <ul>
-                    <li v-for="corr in correction.corrections">
+                    <li
+                        v-for="(corr, index) in correction.corrections"
+                        :key="index"
+                    >
                         <p>{{ corr.description }}</p>
                         {{ corr.was }} => {{ corr.became }}
                     </li>
@@ -17,21 +20,19 @@
 </template>
 
 <script>
-    export default {
-        props: [
-            'corrections',
-        ],
+export default {
+    props: ['corrections'],
 
-        data: function () {
-            return {
-                thing: false,
-            }
-        },
+    data: function() {
+        return {
+            thing: false,
+        }
+    },
 
-        computed: {
-            else: function () {
-                return false
-            },
+    computed: {
+        else: function() {
+            return false
         },
-    }
+    },
+}
 </script>
