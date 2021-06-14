@@ -1,13 +1,7 @@
 <template>
     <Layout>
-        <transition name="welcome">
-            <div key="intro" v-if="isLoading">
-                <div class="intro">
-                    <Intro @done="isLoading = false" />
-                </div>
-            </div>
-
-            <div class="layout" key="layout" v-else>
+        <transition appear name="welcome">
+            <div class="layout">
                 <h1 class="logo">
                     <g-link to="/" title="Japanizer">
                         <span class="logo__symbol">翻</span>
@@ -73,7 +67,6 @@
 <script>
 import rules from '../utils/rules'
 import Console from '../components/Console'
-import Intro from '../components/Intro'
 
 export default {
     metaInfo: {
@@ -89,12 +82,10 @@ export default {
 
     components: {
         Console: Console,
-        Intro: Intro,
     },
 
     data: function() {
         return {
-            isLoading: true,
             showConsole: false,
             input: 'Jag heter Vincent',
             shareIsAvailable: false,
