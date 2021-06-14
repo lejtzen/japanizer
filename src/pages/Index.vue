@@ -176,6 +176,7 @@ export default {
         speak: function(text) {
             let utterance = new SpeechSynthesisUtterance(text)
             let voices = this.synth.getVoices()
+            let japanese = voices.find(voice => voice.lang.includes('ja'))
 
             utterance.pitch = 1
             utterance.rate = 1
@@ -186,6 +187,10 @@ export default {
 
             if (voices[58]) {
                 utterance.voice = voices[58]
+            }
+
+            if (japanese) {
+                utterance.voice = japanese
             }
 
             this.synth.speak(utterance)
