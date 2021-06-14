@@ -65,8 +65,8 @@
 </template>
 
 <script>
-import rules from '../utils/rules'
-import Console from '../components/Console'
+import rules from '@/utils/rules.js'
+import Console from '@/components/Console.vue'
 
 export default {
     metaInfo: {
@@ -81,10 +81,10 @@ export default {
     },
 
     components: {
-        Console: Console,
+        Console,
     },
 
-    data: function() {
+    data() {
         return {
             showConsole: false,
             input: 'Jag heter Vincent',
@@ -135,29 +135,24 @@ export default {
     },
 
     filters: {
-        withLineBreaks: function(value) {
+        withLineBreaks(value) {
             if (!value) return
 
             return value.toString().replace(/\n/gi, '<br>')
         },
     },
 
-    beforeMount: function() {
+    mounted() {
+        this.shareIsAvailable = this.isShareApiAvailable()
         this.synth = window.speechSynthesis
     },
 
-    mounted: function() {
-        this.shareIsAvailable = this.isShareApiAvailable()
-    },
-
-    watch: {},
-
     methods: {
-        isShareApiAvailable: function() {
+        isShareApiAvailable() {
             return !!(window.navigator && window.navigator.share)
         },
 
-        share: function() {
+        share() {
             let title = document.title
             let url = document.querySelector('link[rel=canonical]')
                 ? document.querySelector('link[rel=canonical]').href
@@ -173,21 +168,13 @@ export default {
                 })
         },
 
-        speak: function(text) {
+        speak(text) {
             let utterance = new SpeechSynthesisUtterance(text)
             let voices = this.synth.getVoices()
-            let japanese = voices.find(voice => voice.lang.includes('ja'))
+            let japanese = voices.find(voice => voice.lang.indexOf('ja') === 0)
 
             utterance.pitch = 1
             utterance.rate = 1
-
-            if (voices[18]) {
-                utterance.voice = voices[18]
-            }
-
-            if (voices[58]) {
-                utterance.voice = voices[58]
-            }
 
             if (japanese) {
                 utterance.voice = japanese

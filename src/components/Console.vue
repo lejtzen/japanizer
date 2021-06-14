@@ -22,17 +22,5 @@
 <script>
 export default {
     props: ['corrections'],
-
-    data: function() {
-        return {
-            thing: false,
-        }
-    },
-
-    computed: {
-        else: function() {
-            return false
-        },
-    },
 }
 </script>

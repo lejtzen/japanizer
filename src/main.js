@@ -24,10 +24,12 @@ export default function(Vue, { router, head, isClient }) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
         },
+
         inserted: function(element) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
         },
+
         update: function(element) {
             element.style.height = 'auto'
             element.style.height = element.scrollHeight + 'px'
