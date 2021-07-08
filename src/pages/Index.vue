@@ -106,8 +106,8 @@ export default {
                 .map((word, index) => {
                     let original = word
 
-                    rules.forEach(rule => {
-                        word = word.replace(rule.find, match => {
+                    rules.forEach((rule) => {
+                        word = word.replace(rule.find, (match) => {
                             let corrections = this.corrections[index]
 
                             if (!corrections) {
@@ -173,7 +173,9 @@ export default {
         speak(text) {
             let utterance = new SpeechSynthesisUtterance(text)
             let voices = this.synth.getVoices()
-            let japanese = voices.find(voice => voice.lang.indexOf('ja') === 0)
+            let japanese = voices.find(
+                (voice) => voice.lang.indexOf('ja') === 0,
+            )
 
             utterance.pitch = 1
             utterance.rate = 1
