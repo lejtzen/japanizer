@@ -30,6 +30,7 @@
                                 v-model="input"
                                 v-resize
                                 rows="1"
+                                placeholder="Enter text"
                             ></textarea>
                         </div>
                     </div>
@@ -143,6 +144,7 @@ export default {
     },
 
     mounted() {
+        this.input = (new URLSearchParams(window.location.search)).get('text')
         this.shareIsAvailable = this.isShareApiAvailable()
         this.synth = window.speechSynthesis
     },
