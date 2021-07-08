@@ -6,7 +6,8 @@
     "develop": "gridsome develop",
     "explore": "gridsome explore",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "gridsome": "^0.7.23"
@@ -15,6 +16,14 @@
     "gh-pages": "^3.2.0",
     "gridsome-plugin-svg": "^0.0.14",
     "node-sass": "^6.0.0",
-    "sass-loader": "^10.2.0"
+    "sass-loader": "^10.2.0",
+    "@vue/cli-plugin-eslint": "^4.5.8",
+    "@vue/cli-service": "^4.5.8",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.13.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.1.0",
+    "prettier": "^2.2.1"
   }
 }
