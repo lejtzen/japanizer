@@ -1,0 +1,72 @@
+//
+// Entry
+//
+
+.entry {
+    background: white;
+    border-radius: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+
+    .content {
+        padding: 1.5rem 0;
+        font-size: 1.75rem;
+        line-height: 1em;
+
+        &.content--input {
+            display: flex;
+            align-items: flex-start;
+
+            button {
+                margin: -0.5rem 0;
+                padding: 0.5rem;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        &.content--output {
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            color: #d41d1d;
+        }
+    }
+
+    .actions {
+        padding: 0 0 1.5rem 0;
+        margin: -0.5rem 0;
+        display: flex;
+        align-items: center;
+        color: #d41d1d;
+
+        button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+
+            svg {
+                display: block;
+            }
+        }
+
+        .left-actions {
+            margin: 0 0 0 -0.5rem;
+        }
+
+        .right-actions {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            button {
+                background: #d41d1d;
+                color: white;
+
+                svg {
+                    fill: currentColor;
+                }
+            }
+        }
+    }
+}
