@@ -66,25 +66,3 @@
         }
     }
 }
-
-textarea {
-    font-family: inherit;
-    font-size: 1.75rem;
-    font-weight: inherit;
-    line-height: inherit;
-    letter-spacing: inherit;
-    appearance: none;
-    resize: none;
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    border: none;
-    padding: 2rem;
-    margin: 0;
-    overflow: hidden;
-    background: transparent;
-
-    &:focus {
-        outline: none;
-    }
-}

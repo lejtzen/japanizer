@@ -1,17 +1,27 @@
 <template>
     <Layout>
-        <form @submit.prevent="submit()">
-            <textarea
-                name="input"
-                rows="1"
-                minlength="1"
-                placeholder="Enter text"
-                required
-                v-model="input"
-                ref="input"
-                v-resize
-                @keypress.enter.prevent="submit()"
-            ></textarea>
+        <form class="form" @submit.prevent="submit()">
+            <div class="content content--input">
+                <textarea
+                    name="input"
+                    rows="1"
+                    minlength="1"
+                    placeholder="Enter text"
+                    required
+                    v-model="input"
+                    ref="input"
+                    v-resize
+                    @keypress.enter.prevent="submit()"
+                ></textarea>
+                <button @click="reset()" v-if="input" type="button">
+                    <XIcon />
+                </button>
+            </div>
+            <div class="content content--output">
+                <div>
+                    {{ output || '&nbsp;' }}
+                </div>
+            </div>
         </form>
 
         <Entry
@@ -32,6 +42,7 @@
 <script>
 import translate from '@/utils/translate.js'
 import Entry from '@/components/Entry.vue'
+import { XIcon } from 'vue-feather-icons'
 
 export default {
     metaInfo: {
@@ -47,6 +58,7 @@ export default {
 
     components: {
         Entry,
+        XIcon,
     },
 
     data() {
@@ -57,6 +69,12 @@ export default {
             playingOutput: '',
             synth: null,
         }
+    },
+
+    computed: {
+        output() {
+            return translate(this.input)
+        },
     },
 
     watch: {
@@ -91,6 +109,11 @@ export default {
             this.voice = this.synth
                 .getVoices()
                 .find((voice) => voice.lang.indexOf('ja') === 0)
+        },
+
+        reset() {
+            this.input = ''
+            this.$refs.input.focus()
         },
 
         submit() {

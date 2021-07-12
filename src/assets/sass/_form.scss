@@ -1,0 +1,86 @@
+.form {
+    textarea {
+        flex-grow: 1;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        appearance: none;
+        resize: none;
+        width: 100%;
+        max-width: 100%;
+        border: none;
+        padding: 2rem;
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .content {
+        font-size: 1.75rem;
+        line-height: 1em;
+
+        &.content--input {
+            display: flex;
+            align-items: flex-start;
+
+            button {
+                margin: 1.625rem 2rem -0.5rem 0;
+                padding: 0.5rem;
+
+                svg {
+                    display: block;
+                }
+            }
+        }
+
+        &.content--output {
+            margin: 0 2rem 2rem 2rem;
+            padding: 1.5rem 0 0 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            color: #d41d1d;
+        }
+    }
+
+    .actions {
+        padding: 0 0 1.5rem 0;
+        margin: -0.5rem 0;
+        display: flex;
+        align-items: center;
+        color: #d41d1d;
+
+        button {
+            padding: 0.5rem;
+            border-radius: 9999px;
+
+            svg {
+                display: block;
+            }
+        }
+
+        .left-actions {
+            margin: 0 0 0 -0.5rem;
+        }
+
+        .right-actions {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            button {
+                background: #d41d1d;
+                color: white;
+
+                svg {
+                    fill: currentColor;
+                }
+            }
+        }
+    }
+}
