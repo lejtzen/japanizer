@@ -7,7 +7,6 @@
 module.exports = {
     siteName: 'Japanizer',
     siteUrl: 'https://lejtzen.github.io',
-    pathPrefix: '/japanizer',
     plugins: [
         {
             use: 'gridsome-plugin-svg',
