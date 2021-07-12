@@ -5,7 +5,7 @@
             <button @click="remove()"><TrashIcon /></button>
         </div>
         <div class="content content--output">
-            <div v-html="$options.filters.withLineBreaks(output)"></div>
+            <div>{{ output }}</div>
         </div>
         <div class="actions">
             <div class="left-actions">
@@ -66,14 +66,6 @@ export default {
             type: Boolean,
             default: false,
             required: false,
-        },
-    },
-
-    filters: {
-        withLineBreaks(value) {
-            if (!value) return
-
-            return value.toString().replace(/\n/gi, '<br>')
         },
     },
 
