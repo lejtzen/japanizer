@@ -117,6 +117,8 @@ export default {
 
         remove(text) {
             this.entries = this.entries.filter((entry) => entry.input !== text)
+
+            this.stop()
         },
 
         favourite(text) {
