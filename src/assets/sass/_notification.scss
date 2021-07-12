@@ -1,0 +1,38 @@
+//
+// Notification
+//
+
+.notifications {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+
+    .notification {
+        display: flex;
+        align-items: flex-start;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 1rem;
+
+        + .notification {
+            margin-top: 0.5rem;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-top: 0.18rem;
+        }
+
+        button {
+            padding: 0;
+
+            svg {
+                display: block;
+            }
+        }
+    }
+}

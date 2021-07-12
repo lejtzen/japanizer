@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { notify } from '@/utils/events.js'
 import {
     TrashIcon,
     StarIcon,
@@ -86,31 +87,22 @@ export default {
         },
 
         copy() {
-            this.$copyText(this.output).then(
-                (event) => {
-                    alert('Japanized text copied')
-                    console.log(event)
-                },
-                (error) => {
-                    console.log(error)
-                },
-            )
+            this.$copyText(this.output)
+                .then(() => notify('Japanized text copied to clipboard'))
+                .catch(() =>
+                    notify('Could not copy Japanized text to clipboard'),
+                )
         },
 
         share() {
             const url = document.querySelector('link[rel=canonical]')
-                ? document.querySelector('link[rel=canonical]').href
-                : document.location.href
+            const link = new URL(url ? url.href : document.location.href)
 
-            this.$copyText(url).then(
-                (event) => {
-                    alert('Link copied')
-                    console.log(event)
-                },
-                (error) => {
-                    console.log(error)
-                },
-            )
+            link.searchParams.set('text', encodeURIComponent(this.input))
+
+            this.$copyText(link.href)
+                .then(() => notify('Link copied to clipboard'))
+                .catch(() => notify('Could not copy link to clipboard'))
         },
 
         speak() {
