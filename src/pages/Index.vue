@@ -75,13 +75,14 @@ export default {
     mounted() {
         const input = new URLSearchParams(window.location.search).get('text')
 
-        this.input = input ? input : this.input
+        this.input = input ? decodeURIComponent(input) : this.input
         this.entries = JSON.parse(window.localStorage.getItem('entries')) || []
         this.favourites =
             JSON.parse(window.localStorage.getItem('favourites')) || []
         this.synth = window.speechSynthesis
         this.synth.onvoiceschanged = this.setVoice
 
+        this.$refs.input.focus()
         this.setVoice()
     },
 
