@@ -4,9 +4,15 @@
 // Layouts
 import DefaultLayout from '~/layouts/Default.vue'
 
+// Clipboard
+import VueClipboard from 'vue-clipboard2'
+
 export default function (Vue, { router, head, isClient }) {
     // Set default layout as a global component
     Vue.component('Layout', DefaultLayout)
+
+    // Use Clipboard
+    Vue.use(VueClipboard)
 
     // Apply directive
     Vue.directive('resize', {

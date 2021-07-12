@@ -12,8 +12,8 @@
                 <button @click="favourite()">
                     <StarIcon :class="{ fill: isFavourite }" />
                 </button>
-                <button><CopyIcon /></button>
-                <button><ShareIcon /></button>
+                <button @click="copy()"><CopyIcon /></button>
+                <button @click="share()"><ShareIcon /></button>
             </div>
             <div class="right-actions">
                 <button v-if="isPlaying" @click="stop()"><PauseIcon /></button>
@@ -85,20 +85,32 @@ export default {
             this.$emit('favourite', this.input)
         },
 
-        copy() {},
+        copy() {
+            this.$copyText(this.output).then(
+                (event) => {
+                    alert('Japanized text copied')
+                    console.log(event)
+                },
+                (error) => {
+                    console.log(error)
+                },
+            )
+        },
 
         share() {
-            const title = document.title
             const url = document.querySelector('link[rel=canonical]')
                 ? document.querySelector('link[rel=canonical]').href
                 : document.location.href
 
-            if (!!(window.navigator && window.navigator.share)) {
-                navigator.share({
-                    title: title,
-                    url: url,
-                })
-            }
+            this.$copyText(url).then(
+                (event) => {
+                    alert('Link copied')
+                    console.log(event)
+                },
+                (error) => {
+                    console.log(error)
+                },
+            )
         },
 
         speak() {
