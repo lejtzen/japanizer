@@ -14,12 +14,12 @@
                 <ul>
                     <li>
                         <g-link to="/" title="Japanizer">
-                            <HomeIcon />
+                            <Logo />
                             <span>Japanizer</span>
                         </g-link>
                     </li>
                     <li>
-                        <g-link to="/favourites/">
+                        <g-link to="/favourites/" title="Favourites">
                             <StarIcon />
                             <span>Favourites</span>
                         </g-link>
@@ -32,12 +32,11 @@
 
 <script>
 import Logo from '@/assets/svg/logo.svg?inline'
-import { HomeIcon, StarIcon } from 'vue-feather-icons'
+import { StarIcon } from 'vue-feather-icons'
 
 export default {
     components: {
         Logo,
-        HomeIcon,
         StarIcon,
     },
 

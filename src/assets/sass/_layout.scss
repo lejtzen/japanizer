@@ -3,12 +3,12 @@
 //
 
 #header {
-    padding: 2rem 2rem 0 2rem;
-    margin: 0 0 2rem 0;
+    position: relative;
+    margin: 2rem;
 
     @media only screen and (min-width: 600px) {
         position: sticky;
-        top: 0;
+        top: 2rem;
     }
 
     svg {
@@ -22,6 +22,49 @@
 #main {
     margin: 0 auto;
     max-width: 640px;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 2rem;
+    width: 100%;
+
+    nav {
+        display: flex;
+        justify-content: center;
+
+        ul {
+            display: flex;
+            background-color: white;
+            border-radius: 9999px;
+            padding: 0 1rem;
+
+            li {
+                a {
+                    display: block;
+                    padding: 1rem;
+                    color: #747575;
+
+                    &.active--exact {
+                        color: #d41d1d;
+                    }
+
+                    svg {
+                        display: block;
+                        margin: 0 auto;
+                        fill: currentColor;
+                    }
+
+                    span {
+                        display: block;
+                        margin: 0 auto;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 textarea {
