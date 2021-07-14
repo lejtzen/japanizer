@@ -2,6 +2,12 @@
 // Layout
 //
 
+#layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 #header {
     position: relative;
     margin: 2rem;
@@ -20,15 +26,23 @@
 }
 
 #main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
     margin: 0 auto;
+    width: 100%;
     max-width: 640px;
+
+    > div {
+        width: 100%;
+    }
 }
 
 #footer {
-    position: fixed;
-    left: 0;
-    bottom: 2rem;
+    position: sticky;
+    bottom: 0;
     width: 100%;
+    padding: 2rem 0;
 
     nav {
         display: flex;
@@ -54,13 +68,13 @@
                     svg {
                         display: block;
                         margin: 0 auto;
-                        fill: currentColor;
                     }
 
                     span {
                         display: block;
                         margin: 0 auto;
                         font-size: 0.75rem;
+                        text-align: center;
                     }
                 }
             }

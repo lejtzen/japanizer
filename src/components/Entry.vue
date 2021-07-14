@@ -1,23 +1,25 @@
 <template>
     <div class="entry">
         <div class="content content--input">
-            <div style="flex-grow: 1">{{ input }}</div>
-            <button @click="remove()"><TrashIcon /></button>
+            {{ input }}
         </div>
         <div class="content content--output">
-            <div>{{ output }}</div>
+            {{ output }}
         </div>
         <div class="actions">
             <div class="left-actions">
-                <button @click="favourite()">
-                    <StarIcon :class="{ fill: isFavourite }" />
+                <button @click="remove()" type="button">
+                    <TrashIcon />
                 </button>
-                <button @click="copy()"><CopyIcon /></button>
-                <button @click="share()"><ShareIcon /></button>
+                <button @click="share()" type="button">
+                    <LinkIcon />
+                </button>
             </div>
             <div class="right-actions">
-                <button v-if="isPlaying" @click="stop()"><PauseIcon /></button>
-                <button v-else @click="speak()">
+                <button v-if="isSpeaking" @click="stop()" type="button">
+                    <PauseIcon />
+                </button>
+                <button v-else @click="speak()" type="button">
                     <PlayIcon style="transform: translateX(5%)" />
                 </button>
             </div>
@@ -26,22 +28,15 @@
 </template>
 
 <script>
+import translate from '@/utils/translate.js'
+import synth from '@/utils/synth.js'
 import { notify } from '@/utils/events.js'
-import {
-    TrashIcon,
-    StarIcon,
-    CopyIcon,
-    ShareIcon,
-    PauseIcon,
-    PlayIcon,
-} from 'vue-feather-icons'
+import { TrashIcon, LinkIcon, PauseIcon, PlayIcon } from 'vue-feather-icons'
 
 export default {
     components: {
         TrashIcon,
-        StarIcon,
-        CopyIcon,
-        ShareIcon,
+        LinkIcon,
         PauseIcon,
         PlayIcon,
     },
@@ -49,46 +44,30 @@ export default {
     props: {
         input: {
             type: String,
-            default: '',
             required: true,
         },
-        output: {
-            type: String,
-            default: '',
-            required: true,
-        },
-        isFavourite: {
-            type: Boolean,
-            default: false,
-            required: false,
-        },
-        isPlaying: {
-            type: Boolean,
-            default: false,
-            required: false,
+    },
+
+    data() {
+        return {
+            isSpeaking: false,
+        }
+    },
+
+    computed: {
+        output() {
+            return translate(this.input)
         },
     },
 
     methods: {
         remove() {
+            this.stop()
             this.$emit('remove', this.input)
         },
 
-        favourite() {
-            this.$emit('favourite', this.input)
-        },
-
-        copy() {
-            this.$copyText(this.output)
-                .then(() => notify('Japanized text copied to clipboard'))
-                .catch(() =>
-                    notify('Could not copy Japanized text to clipboard'),
-                )
-        },
-
         share() {
-            const url = document.querySelector('link[rel=canonical]')
-            const link = new URL(url ? url.href : document.location.href)
+            const link = new URL('/', document.location.href)
 
             link.searchParams.set('text', encodeURIComponent(this.input))
 
@@ -98,11 +77,19 @@ export default {
         },
 
         speak() {
-            this.$emit('speak', this.output)
+            synth.speak(
+                this.output,
+                () => {
+                    this.isSpeaking = true
+                },
+                () => {
+                    this.isSpeaking = false
+                },
+            )
         },
 
         stop() {
-            this.$emit('stop')
+            synth.cancel()
         },
     },
 }

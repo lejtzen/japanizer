@@ -1,4 +1,6 @@
 .form {
+    padding: 0 2rem;
+
     textarea {
         flex-grow: 1;
         font-family: inherit;
@@ -9,9 +11,10 @@
         appearance: none;
         resize: none;
         width: 100%;
+        min-width: 100%;
         max-width: 100%;
         border: none;
-        padding: 2rem;
+        padding: 0;
         margin: 0;
         overflow: hidden;
         background: transparent;
@@ -21,40 +24,31 @@
         }
     }
 
-    .content {
-        font-size: 1.75rem;
-        line-height: 1em;
+    #speak {
+        position: relative;
 
-        &.content--input {
-            display: flex;
-            align-items: flex-start;
+        button {
+            position: absolute;
+            left: 50%;
+            top: -3px;
+            transform: translate(-50%, -50%);
+            background: #d41d1d;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 9999px;
 
-            button {
-                margin: 1.625rem 2rem -0.5rem 0;
-                padding: 0.5rem;
-
-                svg {
-                    display: block;
-                }
+            svg {
+                display: block;
+                fill: currentColor;
             }
-        }
-
-        &.content--output {
-            margin: 0 2rem 2rem 2rem;
-            padding: 1.5rem 0 0 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-            color: #d41d1d;
         }
     }
 
-    .actions {
-        padding: 0 0 1.5rem 0;
-        margin: -0.5rem 0;
-        display: flex;
-        align-items: center;
-        color: #d41d1d;
+    #favourite {
+        text-align: center;
 
         button {
+            color: #d41d1d;
             padding: 0.5rem;
             border-radius: 9999px;
 
@@ -62,25 +56,20 @@
                 display: block;
             }
         }
+    }
 
-        .left-actions {
-            margin: 0 0 0 -0.5rem;
+    .content {
+        font-size: 1.75rem;
+        line-height: 1em;
+        text-align: center;
+        padding: 4rem 0;
+
+        &.content--input {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        .right-actions {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            button {
-                background: #d41d1d;
-                color: white;
-
-                svg {
-                    fill: currentColor;
-                }
-            }
+        &.content--output {
+            color: #d41d1d;
         }
     }
 }

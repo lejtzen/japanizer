@@ -1,7 +1,9 @@
 <template>
     <div class="notification">
         <div class="content">{{ notification.text }}</div>
-        <button @click="close()"><XIcon /></button>
+        <button @click="close()" type="button">
+            <XIcon />
+        </button>
     </div>
 </template>
 

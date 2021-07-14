@@ -7,21 +7,29 @@
             </g-link>
         </header>
         <main id="main">
-            <slot></slot>
+            <div>
+                <slot></slot>
+            </div>
         </main>
         <footer id="footer">
             <nav>
                 <ul>
                     <li>
                         <g-link to="/" title="Japanizer">
-                            <Logo />
+                            <Logo class="fill" />
                             <span>Japanizer</span>
                         </g-link>
                     </li>
                     <li>
-                        <g-link to="/favourites/" title="Favourites">
-                            <StarIcon />
+                        <g-link to="/favourites" title="Favourites">
+                            <StarIcon class="fill" />
                             <span>Favourites</span>
+                        </g-link>
+                    </li>
+                    <li>
+                        <g-link to="/about" title="Favourites">
+                            <SmileIcon />
+                            <span>About</span>
                         </g-link>
                     </li>
                 </ul>
@@ -32,20 +40,15 @@
 
 <script>
 import Logo from '@/assets/svg/logo.svg?inline'
-import { StarIcon } from 'vue-feather-icons'
+import { StarIcon, SmileIcon } from 'vue-feather-icons'
 
 export default {
     components: {
         Logo,
         StarIcon,
+        SmileIcon,
     },
 
     props: ['title'],
-
-    data() {
-        return {}
-    },
-
-    computed: {},
 }
 </script>
