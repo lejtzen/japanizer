@@ -1,0 +1,75 @@
+.form {
+    padding: 0 2rem;
+
+    textarea {
+        flex-grow: 1;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        letter-spacing: inherit;
+        appearance: none;
+        resize: none;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    #speak {
+        position: relative;
+
+        button {
+            position: absolute;
+            left: 50%;
+            top: -3px;
+            transform: translate(-50%, -50%);
+            background: #d41d1d;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 9999px;
+
+            svg {
+                display: block;
+                fill: currentColor;
+            }
+        }
+    }
+
+    #favourite {
+        text-align: center;
+
+        button {
+            color: #d41d1d;
+            padding: 0.5rem;
+            border-radius: 9999px;
+
+            svg {
+                display: block;
+            }
+        }
+    }
+
+    .content {
+        font-size: 1.75rem;
+        line-height: 1em;
+        text-align: center;
+        padding: 4rem 0;
+
+        &.content--input {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        &.content--output {
+            color: #d41d1d;
+        }
+    }
+}

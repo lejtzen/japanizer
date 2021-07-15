@@ -1,72 +1,48 @@
 <template>
     <Layout>
-        <transition appear name="welcome">
-            <div class="layout">
-                <h1 class="logo">
-                    <g-link to="/" title="Japanizer">
-                        <span class="logo__symbol">翻</span>
-                        <span class="logo__wordmark">Japanizer</span>
-                    </g-link>
-                </h1>
-
-                <button
-                    class="toggle-sidebar"
-                    :class="{ 'toggle-sidebar--active': showConsole }"
-                    @click="showConsole = !showConsole"
-                >
-                    <IconSettings />
+        <form class="form" @submit.prevent="submit()">
+            <textarea
+                class="content content--input"
+                name="input"
+                rows="1"
+                minlength="1"
+                placeholder="Enter text"
+                required
+                v-model="input"
+                ref="input"
+                v-resize
+                @keypress.enter.prevent="submit()"
+            ></textarea>
+            <div id="speak">
+                <button v-if="isSpeaking" @click="stop()" type="button">
+                    <PauseIcon />
                 </button>
-
-                <div class="panels">
-                    <div class="character">
-                        <button @click.prevent="speak(output)">
-                            <IconVolume />
-                        </button>
-                    </div>
-                    <div class="panel panel--input">
-                        <div class="content">
-                            <textarea
-                                name="input"
-                                v-model="input"
-                                v-resize
-                                rows="1"
-                            ></textarea>
-                        </div>
-                    </div>
-                    <div class="panel panel--output">
-                        <div class="content">
-                            <div
-                                v-html="$options.filters.withLineBreaks(output)"
-                            ></div>
-
-                            <button
-                                v-if="shareIsAvailable"
-                                @click="share()"
-                                type="button"
-                                name="shareOutput"
-                            >
-                                <IconShare />
-                                Share
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="sidebar"
-                    :class="{ 'sidebar--active': showConsole }"
-                >
-                    <div class="sidebar__inner">
-                        <Console :corrections="corrections" />
-                    </div>
-                </div>
+                <button v-else @click="submit()" type="button">
+                    <PlayIcon style="transform: translateX(5%)" />
+                </button>
             </div>
-        </transition>
+            <div class="content content--output">
+                {{ output || '&nbsp;' }}{{ isTyping ? '...' : '' }}
+            </div>
+
+            <div id="favourite">
+                <button
+                    @click="favourite()"
+                    type="button"
+                    :class="{ fill: isFavourite }"
+                >
+                    <HeartIcon />
+                </button>
+            </div>
+        </form>
     </Layout>
 </template>
 
 <script>
-import rules from '@/utils/rules.js'
-import Console from '@/components/Console.vue'
+import translate from '@/utils/translate.js'
+import synth from '@/utils/synth.js'
+import { PauseIcon, PlayIcon, HeartIcon } from 'vue-feather-icons'
+import { debounce } from 'debounce'
 
 export default {
     metaInfo: {
@@ -81,108 +57,90 @@ export default {
     },
 
     components: {
-        Console,
+        PauseIcon,
+        PlayIcon,
+        HeartIcon,
     },
 
     data() {
         return {
-            showConsole: false,
+            favourites: [],
             input: 'Jag heter Vincent',
-            shareIsAvailable: false,
-            synth: null,
-            corrections: {},
+            isSpeaking: false,
+            isTyping: false,
         }
     },
 
     computed: {
         output() {
-            let separator = ' '
-            let words = this.input.split(separator)
+            return translate(this.input)
+        },
 
-            this.corrections = {}
-
-            return words
-                .map((word, index) => {
-                    let original = word
-
-                    rules.forEach((rule) => {
-                        word = word.replace(rule.find, (match) => {
-                            let corrections = this.corrections[index]
-
-                            if (!corrections) {
-                                corrections = {
-                                    word: original,
-                                    corrections: [],
-                                }
-                            }
-
-                            corrections.corrections.push({
-                                was: match,
-                                became: rule.replace(match),
-                                description: rule.description,
-                            })
-
-                            this.corrections[index] = corrections
-
-                            return rule.replace(match)
-                        })
-                    })
-
-                    return word
-                })
-                .join(separator)
+        isFavourite() {
+            return this.favourites.includes(this.input.trim())
         },
     },
 
-    filters: {
-        withLineBreaks(value) {
-            if (!value) return
+    watch: {
+        favourites(favourites) {
+            window.localStorage.setItem(
+                'favourites',
+                JSON.stringify(favourites),
+            )
+        },
 
-            return value.toString().replace(/\n/gi, '<br>')
+        input(input) {
+            window.sessionStorage.setItem('input', input)
+            this.isTyping = true
+            debounce(() => (this.isTyping = false), 500)()
         },
     },
 
     mounted() {
-        this.shareIsAvailable = this.isShareApiAvailable()
-        this.synth = window.speechSynthesis
+        const sharedInput = new URLSearchParams(window.location.search).get(
+            'text',
+        )
+        const savedInput = window.sessionStorage.getItem('input')
+
+        this.favourites =
+            JSON.parse(window.localStorage.getItem('favourites')) || []
+        this.input = sharedInput
+            ? decodeURIComponent(sharedInput)
+            : savedInput || this.input
+        this.$refs.input.focus()
     },
 
     methods: {
-        isShareApiAvailable() {
-            return !!(window.navigator && window.navigator.share)
-        },
-
-        share() {
-            let title = document.title
-            let url = document.querySelector('link[rel=canonical]')
-                ? document.querySelector('link[rel=canonical]').href
-                : document.location.href
-
-            navigator
-                .share({
-                    title: title,
-                    url: url,
-                })
-                .then(() => {
-                    // Ready for callback
-                })
-        },
-
-        speak(text) {
-            let utterance = new SpeechSynthesisUtterance(text)
-            let voices = this.synth.getVoices()
-            let japanese = voices.find(
-                (voice) => voice.lang.indexOf('ja') === 0,
+        submit() {
+            synth.speak(
+                translate(this.input),
+                () => {
+                    this.isSpeaking = true
+                },
+                () => {
+                    this.isSpeaking = false
+                },
             )
+        },
 
-            utterance.pitch = 1
-            utterance.rate = 1
+        favourite() {
+            const text = this.input.trim()
 
-            if (japanese) {
-                utterance.voice = japanese
+            if (!text) {
+                return
             }
 
-            this.synth.speak(utterance)
+            if (this.isFavourite) {
+                this.favourites = this.favourites.filter(
+                    (entry) => entry !== text,
+                )
+            } else {
+                this.favourites.unshift(text)
+            }
+        },
+
+        stop() {
+            synth.cancel()
         },
     },
 }
