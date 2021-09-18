@@ -4,7 +4,7 @@ Funny japanese translator.
 
 ## Live demo
 
-[View live demo](https://lejtzen.github.io/japanizer/)
+[View live demo](https://japanizer.lejtzendesign.se)
 
 ## Develop locally
 
