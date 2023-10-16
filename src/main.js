@@ -4,19 +4,15 @@
 // Layouts
 import DefaultLayout from '~/layouts/Default.vue'
 
-// Icons
-import IconSettings from '@/assets/images/settings.svg?inline'
-import IconVolume from '@/assets/images/volume-2.svg?inline'
-import IconShare from '@/assets/images/share.svg?inline'
+// Clipboard
+import VueClipboard from 'vue-clipboard2'
 
 export default function (Vue, { router, head, isClient }) {
     // Set default layout as a global component
     Vue.component('Layout', DefaultLayout)
 
-    // Icons
-    Vue.component('IconSettings', IconSettings)
-    Vue.component('IconVolume', IconVolume)
-    Vue.component('IconShare', IconShare)
+    // Use Clipboard
+    Vue.use(VueClipboard)
 
     // Apply directive
     Vue.directive('resize', {

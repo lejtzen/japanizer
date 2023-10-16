@@ -4,8 +4,7 @@ html {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    font-size: 18px;
-    background: black;
+    font-size: 16px;
 }
 
 body {
@@ -15,13 +14,15 @@ body {
         Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol';
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: rgba(0, 0, 0, 0.87);
 }
 
 html,
 body {
     -ms-overflow-style: none;
+    background-color: #f1f2f6;
 }
 
 body::-webkit-scrollbar {
@@ -51,8 +52,11 @@ button {
     border: none;
     background: transparent;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
     color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
 }
 
 button:disabled {
@@ -62,11 +66,19 @@ button:disabled {
     cursor: default;
 }
 
-/*
-App
-*/
+.fill {
+    fill: currentColor;
 
-#app {
+    svg {
+        fill: currentColor;
+    }
+}
+
+.muted {
+    padding: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.32);
 }
 
 /*
@@ -123,10 +135,9 @@ iPhone X
     padding-left: env(safe-area-inset-left);
 }
 
-// Animations
-@import 'animations';
-@import 'typography';
-
 // Parts
+@import 'typography';
 @import 'layout';
-@import 'console';
+@import 'form';
+@import 'entry';
+@import 'notification';
