@@ -13,7 +13,7 @@
     "gridsome": "^0.7.23"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.0",
+    "gh-pages": "^5.0.0",
     "gridsome-plugin-svg": "^0.0.14",
     "node-sass": "^6.0.0",
     "sass-loader": "^10.2.0",
