@@ -66,7 +66,7 @@
 
 <script>
 import rules from '@/utils/rules.js'
-import findFirstMatchByPriority from '@/utils/helpers.js'
+import { findFirstMatchByPriority } from '@/utils/helpers.js'
 import Console from '@/components/Console.vue'
 
 export default {
@@ -171,10 +171,13 @@ export default {
 
         speak(text) {
             let utterance = new SpeechSynthesisUtterance(text)
-            let voices = this.synth.getVoices().filter((voice) => voice.lang.indexOf('ja') === 0)
+            let voices = this.synth
+                .getVoices()
+                .filter((voice) => voice.lang.indexOf('ja') === 0)
             let voice = findFirstMatchByPriority(
                 voices,
-                (voice) => voice.voiceURI === 'com.apple.voice.compact.ja-JP.Kyoko',
+                (voice) =>
+                    voice.voiceURI === 'com.apple.voice.compact.ja-JP.Kyoko',
                 (voice) => voice.voiceURI.indexOf('Google') === 0,
                 (voice) => true,
             )
