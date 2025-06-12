@@ -13,17 +13,21 @@
     "gridsome": "^0.7.23"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.0",
-    "gridsome-plugin-svg": "^0.0.14",
-    "node-sass": "^6.0.0",
-    "sass-loader": "^10.2.0",
-    "@vue/cli-plugin-eslint": "^4.5.8",
-    "@vue/cli-service": "^4.5.8",
+    "@vue/cli-plugin-eslint": "^4.5.19",
+    "@vue/cli-service": "^4.5.19",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.13.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^7.1.0",
-    "prettier": "^2.2.1"
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "gridsome-plugin-svg": "^0.0.14",
+    "prettier": "^2.8.8",
+    "sass": "^1.89.2",
+    "sass-loader": "^10.5.2"
+  },
+  "overrides": {
+    "gridsome": {
+      "sharp": "0.29.3"
+    }
   }
 }
